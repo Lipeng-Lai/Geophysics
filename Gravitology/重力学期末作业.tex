@@ -1,0 +1,492 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{geometry}
+\geometry{left=2.5cm,right=2.5cm,top=2.0cm,bottom=2.5cm}
+\usepackage[english]{babel}
+\usepackage{amsmath,amsthm}
+\usepackage{amsfonts}
+\usepackage[longend,ruled,linesnumbered]{algorithm2e}
+\usepackage{fancyhdr}
+\usepackage{ctex}
+\usepackage{array}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{enumitem} % 枚举包
+\usepackage{float} % 调整图片浮动位置包
+\usepackage{subfigure} % 插入多图的显示子图包
+
+\begin{document}
+
+
+\title{
+{\heiti《重力学》期末作业}
+}
+\date{}
+
+\author{
+姓名：\underline{}~~~~~~
+学号：\underline{}~~~~~~}
+
+\maketitle
+
+\noindent
+
+\noindent
+{\bf 题目1：}已知直角坐标系下质体$\Omega$的引力位积分表达式:
+
+\begin{equation}
+    V\left(x,y,z\right)=G\iiint_{\Omega}\frac{\sigma\left(x_s,y_s,
+    z_s\right)}{\left[\left(x_s-x\right)^2+\left(y_s-y\right)^2+
+    \left(z_s-z\right)^2\right]^{\frac12}}dx_sdy_sdz_s.
+\end{equation}
+
+\noindent 
+上式中，$G$为万有引力常数，$(x, y, z)$和$(x_s, y_s, z_s)$分别为观察点和场源$\Omega$中任意一点
+坐标，据该式推出引力位函数关于观察点纵坐标$z$的二阶偏导数$V_{zz}$的引力位积分表达式。
+
+\vspace{5pt}
+\noindent
+{\bf 答：}
+\noindent \\
+引力位函数对观察点纵坐标$z$求一次偏导为:
+\begin{equation}
+    \begin{aligned}\frac{\partial V}{\partial z}& = G\iiint_{\Omega}\frac{\sigma(x_s,y_s,z_s)(z_s-z)}
+        {[(x_s-x)^2+(y_s-y)^2+(z_s-z)^2]^{\frac32}}dx_sdy_sdz_s\end{aligned}
+\end{equation}
+引力位函数对观察点纵坐标$z$求二次偏导为:
+\begin{equation}
+    \begin{aligned}\frac{\partial^2 V}{\partial z^2}& = G\iiint_{\Omega}\frac{\sigma(x_s,y_s,z_s)3(z_s-z)^2}
+        {[(x_s-x)^2+(y_s-y)^2+(z_s-z)^2]^{\frac52}}dx_sdy_sdz_s\end{aligned}
+\end{equation}
+
+
+
+\vspace{10pt}
+\noindent
+{\bf 题目2：} 已知均匀球层引力位表达式如下：
+
+\begin{equation}
+    V\left(\mathbf{r}\right)=\begin{cases}\dfrac{4\pi GR^2\mu}{r},r\geq R,\\4\pi GR\mu,r<R.\end{cases}
+\end{equation}
+
+\noindent
+上式中，$G$为万有引力常数，$\mu$为球层密度，$\mathbf{r}$和$r$分别为球心到观察点的矢径及其大小。依据上式推导出半径为
+$R$的均匀实心球体内、外的引力位和引力场表达式。选做题：利用引力场高斯定理完成上述推导。
+
+
+\vspace{5pt}
+\noindent
+{\bf 答：}
+\noindent \\
+(1) 当 $r < R$时, \\
+在引力场中，高斯定理有：
+\begin{equation}
+    \oint_{S}\mathbf{F}\cdot d\mathbf{S}=-4\pi GM_{inside}
+\end{equation}
+
+\noindent
+由于$\vec{F}, \vec{S}$夹角为180°，对左式处理有：
+\begin{equation}
+    \oint_{S} \mathbf{F} \cdot d\mathbf{S} = - \oint_{S} F dS \\
+    = - F \oint d S
+    = - F \times 4 \pi r^2
+\end{equation}
+
+\noindent
+对右式处理有：
+\begin{equation}
+    M_{inside} = \frac{M}{4 \pi R^3 / 3} \times \frac{4 \pi r^3}{3} \\
+    = \frac{Mr^3}{R^3}
+\end{equation}
+
+\noindent
+重新代入有：
+\begin{equation}
+    - F \times 4 \pi r^2 = - \frac{-4\pi G M r^3}{R^3}
+\end{equation}
+化简有：
+\begin{equation}
+    F = \frac{GM r}{R^3}
+\end{equation}
+
+\noindent
+(2) 当 $r \geq R$时, \\
+对于左边式仍然不变：
+\begin{equation}
+    \oint_S \mathbf{F} \cdot d \mathbf{S} = - F \times 4 \pi r^2
+\end{equation}
+而此时, $M_{inside} = M$，故有：
+\begin{equation}
+    F = \frac{GM}{r^2}
+\end{equation}
+
+
+\vspace{10pt}
+\noindent
+{\bf 题目3：}分别从惯性系和非惯性系（即地固坐标系）视角出发，对地球表面静止观察者做
+受力分析（画出示意图）。在这两种视角下，重力的定义和作用是什么？
+
+
+\vspace{5pt}
+\noindent
+{\bf 答：}
+受力分析示意图如下所示：
+\begin{figure}[H] %H为当前位置，!htb为忽略美学标准，htbp为浮动图形
+    \centering %图片居中
+    \includegraphics[width=0.7\textwidth]{q3.png} %插入图片，[]中设置图片大小，{}中是图片文件名
+    \caption{左图:惯性系视角; 右图:非惯性系视角} %最终文档中希望显示的图片标题
+    \label{Fig.main2} %用于文内引用的标签
+\end{figure}
+
+\noindent
+(1) 对于惯性系视角, 其向心力$\vec{C_F}= \vec{F} + \vec{N}$ \\
+对于重力计算式为：
+\begin{equation}
+    \vec{g} = \vec{F} - \vec{C_F}
+\end{equation}
+
+\noindent
+(2) 对于非惯性系，其惯性离心力满足$\vec{F} + \vec{N} + \vec{C_F} = 0$
+对于重力计算式为：
+\begin{equation}
+    \vec{g} = \vec{F} + \vec{C_F}
+\end{equation}
+
+\vspace{10pt}
+\noindent
+{\bf 题目4：}将月球(密度$\sigma_L = 3.344 g \cdot cm^{-3}$， 半径$R_L = 1737.4km$)分别视为刚体和流体，计算其
+相对于地球(密度$\sigma_E = 5.5134 g \cdot cm^{-3}$, 半径为$R_E = 6371.0 km$)的洛希极限(以km为单位)。在
+月球接近地球的过程中，能否达到该极限？
+
+\vspace{5pt}
+\noindent
+{\bf 答：} \\
+在地球上对靠近月球的一点受力分析有：
+\begin{equation}
+    a_T = G \frac{m_L}{(r_L - R)^2} - G \frac{m_L}{r_L^2}  \\
+    = G\frac{m_L}{r_L^2}[(1 - \frac{R}{r_L})^{-2} - 1]
+\end{equation}
+其中，$m_L$为地球的质量，$r_L$为地球质心和月球质心的距离, $R$为地球半径 \\
+令 $x = \frac{R}{r_L}$
+则有：
+\begin{equation}
+    f(x) = (1 - x)^{-2}
+\end{equation}
+将$f(x)$展开成$x=0$附近的泰勒级数，有：
+\begin{equation}
+    f(x) = f(x + 0) = f(0) + f'(0)x + \frac{f''(0)}{2!}x^2 + 
+    ... + \frac{f^n(0)}{n!}x^n + ...
+\end{equation}
+其中， $f(0) = 1$, $f'(0) = -2(1-x)^{-3}|_{x=0} = 2$, $f''(0) = 3$ \\
+以此类推，则有：
+\begin{equation}
+    f^n(0) = (n + 1) (1 - x)^{-(n - 2)}
+\end{equation}
+故代入上式有：
+\begin{equation}
+    f(x) = 1 + 2x + 3x^2 + ... + nx^{n-1} + ...
+\end{equation}
+对于上式，忽略二次及以上的高次项，得到：
+\begin{equation}
+    (1 - \frac{R}{r_L})^{-2} = 1 + 2\frac{R}{r_L}
+\end{equation}
+将$(19)$式代入$(14)$式有：
+\begin{equation}
+    a_T \approx = 2G \frac{m_L R}{r_L^3}
+\end{equation}
+洛希极限的定义为：如过卫星离行星太近，潮汐力将会超过维持它自身完整性的引力，卫星会被撕碎。
+对于月球自身的引力为:
+\begin{equation}
+    F_M = G \frac{m_M}{r_M^2}
+\end{equation}
+令$a_T = F_M$，即可得到临界位置：
+\begin{equation}
+    r_L = r_E (2 \frac{\sigma_E}{\sigma_M})^{\frac{1}{3}}
+\end{equation}
+其中, $r_L$为地月质心距离, $r_E$为地球半径, 
+$\sigma_E$为地球密度, $\sigma_M$为月球
+密度 \\
+(1) 若视月球为流体，则有:
+\begin{equation}
+    r_L = 2.42 r_E (\frac{\sigma_E}{\sigma_M})^{\frac{1}{3}} = 18217.61 km
+\end{equation}
+(2) 若视月球为刚体，则有：
+\begin{equation}
+    r_L = 1.26 r_E (\frac{\sigma_E}{\sigma_M})^{\frac{1}{3}} = 9485.21 km
+\end{equation}
+均大于地球半径$r_E = 6371km$, 故月球在接近地球的过程中，能达到洛希极限。
+
+
+\vspace{10pt}
+\noindent
+{\bf 题目5：}写一段中学生能够看懂的关于岁差、章动和极移之间区别的简介。选做题：为什
+么极移会引起地表上固定观测点的纬度变化，而岁差和章动却不能？
+
+\vspace{5pt}
+\noindent
+{\bf 答：}(1)
+    岁差是地球轨道椭圆性及月球、太阳引力对地球轴线的影响，
+导致轴线在空间中缓慢摆动，约26000年改变指向，微调星座位置。
+
+章动是地球自转轴在天球上的摆动，每约18年画出一小圆圈，因地球形状和引力影响，
+会影响恒星和行星位置观测。
+
+极移是地球自转轴实际位置因地壳运动和地球内部活动微移，缓慢影响自转轴方向，
+通常需数百年显现。
+
+岁差涉及轨道周期性变化，
+章动是自转轴的周期性摆动，而极移源自地球内部活动。
+
+(2)极移会微微改变地球自转轴的方向，可能影响固定观测点的纬度，因为纬度取决于自转轴和赤道的夹角。
+
+岁差和章动也会使自转轴周期性变化，但对固定观测点的纬度影响微弱。
+它们引起的变化相对较小，通常不会明显改变纬度。
+
+
+\vspace{10pt}
+\noindent
+{\bf 题目6：}计算以下移动观测平台上的厄特沃斯加速度（以“毫伽”为单位）：
+\begin{enumerate}[label=(\arabic*)] % 引入枚举包
+    \item 位于北纬 30°，航向 23°，航速 142 节的民航客机；
+    \item 位于北纬 36°，航向 90°，航速 18 节的大型水面舰艇。
+\end{enumerate}
+
+\noindent
+提示：为方便计算，可将地球视作半径为 6371 km 的正球体，且所有载具均位于地
+表。选做题：若前述题目中航向和航速大小均存在 1\%的误差，则引起的厄特沃加速度
+误差有多大？
+
+\vspace{5pt}
+\noindent
+{\bf 答：}
+在地球表面上以$V_H$速度运动, 其厄特沃斯加速度为：
+\begin{equation}
+    \Delta g_{Eotvos} = \Delta g_E + \Delta g_N
+\end{equation}
+\begin{equation}
+    \Delta g_{Eotvos} = 2w V_H \sin A + \frac{V_H^2}{r}
+\end{equation}
+地球的角速度为：
+\begin{equation}
+    w_E = \frac{2 \pi}{24} = \frac{\pi}{12}
+\end{equation}
+(1) 对于位于北纬30°的客机 \\
+根据直角三角形几何关系有：
+\begin{equation}
+    w = w_E \times \cos \frac{\pi}{6} = \frac{\sqrt{3} \pi}{24}
+\end{equation}
+其中航速142节的民航客机速度约为262.32km/h，代入式$(26)$中，计算可得：
+\begin{equation}
+    \Delta g_{Eotvos} = 2 \times \frac{\sqrt{3} \pi}{24} \times V_H \sin A 
+    + \frac{V_H}{r} = 46.52 mGal
+\end{equation}
+(2) 对于北纬36°的水面舰艇\\
+根据直角三角形几何关系有：
+\begin{equation}
+    w = w_E \times \cos 36 = 0.21
+\end{equation}
+其中航速18节的水面舰艇速度约为33.33km/h，代入式$(26)$中，计算可得：
+\begin{equation}
+    \Delta g_{Eotvos} = 14.01 mGal
+\end{equation}
+
+
+\vspace{10pt}
+\noindent
+{\bf 题目7：}依据赫尔墨特正常重力公式：
+\begin{equation}
+    \gamma_0(\varphi)=9.78030\left(1+0.005302\sin^2\varphi-0.000007\sin^22\varphi\right)\mathrm{~(m/s^2)}
+\end{equation}
+
+\noindent
+计算:(1)椭球体表面正常重力值(以“毫伽”(mGal)为单位)及其随纬度的变化
+率（以 mGal/km 为单位）从赤道到两极的变化范围。(2)成都理工大学所在位置(北
+纬 30.67°）对应的椭球体表面正常重力值及其变化率大小(单位同(1))。
+
+\vspace{5pt}
+\noindent
+{\bf 答：}
+(1) \\
+1.1 在赤道上 $\varphi = 0^\circ$
+\begin{equation}
+    \gamma_0(0^\circ)=9.78030\left(1+
+    0.005302\sin^2\varphi-0.000007\sin^22\varphi\right) = 978030mGal
+\end{equation}
+1.2 在两极上 $\varphi = 90^\circ$
+\begin{equation}
+    \gamma_0(90^\circ)=9.78030\left(1+
+    0.005302\sin^2\varphi-0.000007\sin^22\varphi\right) = 983217mGal
+\end{equation}
+变化率$\eta$为：
+\begin{equation}
+    \eta = \frac{983217 - 978030}{90^\circ - 0^\circ} = 57.6mGal / \circ
+\end{equation}
+(2) 成都理工大学的位置(北纬$30.67^\circ$)
+\begin{equation}
+    \gamma_0(30.67^\circ)=9.78030\left(1+
+    0.005302\sin^2\varphi-0.000007\sin^22\varphi\right) = 979374mGal
+\end{equation}
+对于成都理工大学附近的重力值变化率为：
+\begin{equation}
+    \frac{d \gamma_0(\varphi)}{d \varphi} =  45.3866 mGal / \circ
+\end{equation}
+
+\vspace{10pt}
+\noindent
+{\bf 题目8：}通过各种渠道搜集信息，简要介绍 GRACE 和 GRACE-FO 计划测量地球重力场
+的原理、关键技术及具体应用。（鼓励给出具体的文献或资料出处。）
+
+\vspace{5pt}
+\noindent
+{\bf 答：} GRACE（Gravity Recovery and Climate Experiment）和
+GRACE-FO（GRACE Follow-On）是一系列的地球观测卫星任务，旨在测量地球重力场的变化。
+它们使用微波测距技术来监测地球重力场的微小变化，通过两颗卫星组成的飞行器对地球重力场进行高精度测量。
+
+原理：这些卫星利用微波测距原理来测量彼此之间的距离变化。
+它们之间通过微波信号相互通信，通过观察两颗卫星之间的距离变化，
+可以推断出地球引力场的微小变化。地球的重力场受到地表水量分布、冰川融化、
+海洋洋流等因素的影响，因此可以通过测量这些微小变化来了解地球系统中的重要变化。\\
+参考文献：
+\begin{enumerate}[label=(\arabic*)] % 引入枚举包
+    \item 基于GRACE卫星数据的高精度全球静态重力场模型
+    \item https://sasclouds.com/chinese/satellite/global/gracefo
+    \item 基于星间加速度法精确和快速确定GRACE地球重力场
+    \item https://grace.jpl.nasa.gov/mission/grace/
+\end{enumerate}
+
+
+\vspace{10pt}
+\noindent
+{\bf 题目9：}引起地球重力场时空变化的因素有哪些？这些变化对于人类而言有何现实意义？
+
+\vspace{5pt}
+\noindent
+{\bf 答：} 影响地球重力场时空变化的因素：
+\begin{enumerate}[label=(\arabic*)] % 引入枚举包
+    \item 地幔对流，核幔边界起伏
+    \item 板块运动，冰后期反弹
+    \item 大气，海洋，地下水，冰雪和地震活动
+    \item 大型的人造水利工程
+\end{enumerate}
+
+意义：地球重力场时变特性的研究对于揭示潜在的地
+球动力学过程具有十分重要的意义. 其中一个非常
+重要的意义就在于通过收集大量的高精度的地球重
+力场数据, 根据地球重力场的分布, 可以研究地球形
+状、地球密度分布、地球内部结构、物理状态和地球
+的动力机制以及对航空航天器的影响. 时变的地球
+重力场对人造卫星轨道、空间飞行器的轨道设计和
+控制, 及其运动规律都有着不可忽视的影响.
+
+参考文献：地球重力场时变性的研究进展
+
+
+\vspace{10pt}
+\noindent
+{\bf 题目10：}重力学课程中介绍过哪几种重力异常？它们各自对应的剩余密度分布有何不同？（鼓励结合图示说明。）
+
+\vspace{5pt}
+\noindent
+{\bf 答：} 
+\begin{enumerate}[label=(\arabic*)] % 引入枚举包
+    \item 自由空间重力异常
+    \item 布格重力异常
+\end{enumerate}
+(1) 自由空间重力异常
+定义：经过了正常场校正和高度校正后的剩余部分
+\begin{equation}
+    \Delta g_{FA} = g - \gamma_0 + \Delta g_h
+\end{equation}
+其地质-地球物理意义：反应地球与椭球体之间的密度差异 \\
+(2) 布格重力异常
+定义：实测重力值经过正常场校正，高度校正，地形校正和中间层校正后的剩余部分
+\begin{equation}
+    \Delta g_B = g - \gamma_0 + \Delta g_h + \Delta g_{\Delta T} + \Delta g_{\sigma}
+\end{equation}
+其地质-地球物理意义：在空间重力异常基础之上，去除了参考面(椭球面)以上的地球起伏对观测重力值的贡献
+
+\vspace{10pt}
+\noindent
+{\bf 题目11：}如下图所示，针对子图(a)~(c)中显示的密度结构（各地层向两侧的延伸范围可视
+为无穷远），能否通过地面重力测点（以三角形符号显示）观测到与地下构造相对应的
+重力异常？为什么？ 选做题：地面重力勘探对横向（水平方向上的）密度变化还是纵
+向（垂直方向上的）密度变化更敏感？为什么？
+\begin{figure}[H] %H为当前位置，!htb为忽略美学标准，htbp为浮动图形
+    \centering %图片居中
+    \includegraphics[width=0.7\textwidth]{q11.png} %插入图片，[]中设置图片大小，{}中是图片文件名
+    \caption{地层密度图} %最终文档中希望显示的图片标题
+    \label{Fig.main2} %用于文内引用的标签
+\end{figure}
+
+
+\vspace{5pt}
+\noindent
+{\bf 答：}
+
+
+
+
+\vspace{10pt}
+\noindent
+{\bf 题目12：}重力勘探中，幅度大于观测误差 3 倍以上的异常可以被准确识别出来。成都理工
+大学现有 1 台 CG-6 石英弹簧重力仪。该仪器观测精度约为 0.01 mGal。假设地下有一
+条直径为 6 m 的地铁隧道，隧道周围土层密度约为 1.8 g·cm-3。根据以上条件，计算这
+台重力仪能够探测到的隧道中心深度极限。提示：隧道可视为沿水平（Y 轴）方向无
+限延伸的空心圆柱体，其重力异常计算公式如下：
+\begin{equation}
+    \Delta g\left(x,z\right)=2G\lambda\frac{z_c-z}{\left(x_c-z\right)^2+\left(z_c-z\right)^2}
+\end{equation}
+
+\noindent
+上式中，$(x, z)$和$x_c, z_c$分别为观测点及隧道截面圆圆心坐标， $\lambda = \pi R^2 \sigma$
+为圆柱体的线密度（即单位长度的质量），$R$和$\sigma$分别为圆柱体的半径和剩余密度。选做题：如果
+被探测目标是一个相同半径的球形空洞，则探测深度极限有多大？在不知情的情况
+下，如何通过地面重力观测分辨被探测目标是隧道还是孤立空洞？
+
+\vspace{5pt}
+\noindent
+{\bf 答：} 由题可知，幅度大于观测误差3倍以上的异常可以被准确识别出来，其中观测误差为0.01mGal，
+即当$\Delta g(x, z) \geq 3 \times 0.01$mGal即得到隧道中心深度极限，假设观测点$x = x_c = 0,
+z = 0$，代入上式则有：
+\begin{equation}
+    z_c \leq \frac{ 2 G \lambda}  {0.03 mGal}
+\end{equation}
+对于线密度$\lambda$有：
+\begin{equation}
+    \lambda = \pi R^2 \sigma = 1.62 \times 10^4 kg / m
+\end{equation}
+其中引力常数$G = 6.67 \times 10^{-11} m^3 kg^{-1} s^{-2}$，
+代入式$(41)$可得：
+\begin{equation}
+    z_c \leq 7.203m
+\end{equation}
+故探测深度极限可达7.203m。
+
+\vspace{10pt}
+\noindent
+{\bf 题目13：}为什么可以利用均衡重力异常研究地壳的垂直升降趋势？为什么艾里均衡模型和
+普拉特均衡模型被称为局部均衡模型？
+
+\vspace{5pt}
+\noindent
+{\bf 答：}均衡重力异常是指由于地壳构造变化引起的地球重力场异常。
+这种异常可以用来研究地壳的垂直升降趋势，因为地壳的厚度和密度分布会影响地球重力场。
+通过观测和分析地球表面的重力异常变化，可以推断出地壳中可能存在的升降变化。
+
+艾里均衡模型和普拉特均衡模型被称为局部均衡模型，因为它们都是试图解释地壳垂直升降的理论模型，
+但是着眼点不同。
+
+艾里均衡模型关注于岩石圈下地幔流体动力学的研究。
+这个模型假设地幔中的热对流会导致地壳板块的垂直上升和下沉。
+通过这种上升和下沉的过程，地壳板块在地球表面形成了地形的变化，这也会在重力场中产生对应的异常。
+
+普拉特均衡模型则更侧重于地壳块体密度差异引起的垂直运动。
+它提出了地壳板块的浮力平衡概念，认为密度较低的地壳块体会“浮”在密度较高的地壳块体之上。
+这种不均匀密度的分布会导致地球表面的地形变化，进而在重力场中形成异常。
+
+这两个模型都是基于局部区域的假设和观察结果，试图解释地壳垂直升降背后的机制。
+它们被称为“局部均衡模型”，因为它们描述的是相对较小范围内地壳板块的垂直变动，
+并且这些模型并不完全涵盖全球尺度上地壳运动的复杂性。
+
+
+\end{document}\
