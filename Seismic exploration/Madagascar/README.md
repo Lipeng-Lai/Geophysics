@@ -1,5 +1,3 @@
-## 简易的Madagascar库函数手册
+# 简介
 
-资源来源于:https://www.reproducibility.org/wiki/Main_Page
-
-记录本人理解
+地震勘探，实验报告为：合成地震记录_速度分析.pdf
